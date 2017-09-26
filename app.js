@@ -6,7 +6,7 @@ class Aplicacion
     {
         this.videos = [];
         this.selectedVideo = null;
-        this.searchTerm = "";
+        this.searchTerm = "Jax Jones - You Don't Know Me ft. RAYE";
         this.buscar = $(`#buscar`);
         this.btnBuscar = $(`#btnBuscar`);
         this.lista = $("#root");
@@ -16,6 +16,7 @@ class Aplicacion
     }
     init() 
     {
+        this.youtubeSearch(this.searchTerm);
         this.buscar.focus();
         this.buscar.keyup((e) =>
         {
