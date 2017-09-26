@@ -67,8 +67,8 @@ class Aplicacion
     videoSeleccionado(video)
     {
         const url = `https://www.youtube.com/embed/${video.id.videoId}`;
-        this.infoVideo.html(`<h4>${video.snippet.title}</h4>
-                            <p>${video.snippet.description}</p>`);
+        this.infoVideo.html(`<h3>${video.snippet.title}</h3>
+                            <h4 class="descripcion">${video.snippet.description}</h4>`);
         return `<iframe class="embed-responsive-item" src=${url}></iframe>`;
     }
     videoSearch(searchTerm) 
@@ -80,7 +80,7 @@ class Aplicacion
             this.selectedVideo = data.items[0];
             this.searchTerm = searchTerm;
             let list = this.getVideoList(this.videos);
-            console.log("lis: ", list);
+            console.log("list: ", list);
             $("#root").append(list);
         });
     }
