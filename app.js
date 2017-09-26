@@ -30,19 +30,13 @@ class Aplicacion
             this.lista.empty();
             this.youtubeSearch(this.buscar.val());
             //this.video.append()
-        });
-        
-        //app.videoSearch("iPhone");
-        
+        });        
     }
     getVideoList(videos) 
     {
         return videos.map((video, index) => 
         {
             const imageUrl = video.snippet.thumbnails.medium.url;
-            //<iframe class="embed-responsive-item" src=${url}></iframe>
-            const url = `https://www.youtube.com/embed/${video.id.videoId}`;
-            console.log("VIDEO ID" + video.id.videoId);
             return `<li>
                         <p>
                             <img class="media-object" id=${video.id.videoId} src=${imageUrl} />
@@ -55,17 +49,14 @@ class Aplicacion
     {
         YTSearch({ key: API_KEY, term: searchTerm }, data => 
         {
-            console.log("result", data);
             this.videos = data;
             this.selectedVideo = data[0];
             this.searchTerm = searchTerm;
             let list = this.getVideoList(this.videos);
-            console.log(this.selectedVideo);
             this.lista.append(list);
             let videoSelec = this.videoSeleccionado(this.selectedVideo);
             this.video.append(videoSelec);
             this.imgs = $(`img`);
-            console.log(this.imgs);
             this.imgs.click((e) => 
             {
                 this.lista.empty()
