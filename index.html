@@ -6,11 +6,11 @@
        <meta http-equiv="X-UA-Compatible" content="ie=edge">
        <title>Youtube jQuery</title>
 
-       <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-       <script src="node_modules/jquery/dist/jquery.min.js"></script>
-       <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-       <script src="node_modules/axios/dist/axios.min.js"></script>
-       <script src="node_modules/youtube-api-search/index.js"></script>
+       <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.min.css">
+       <script src="jquery/dist/jquery.min.js"></script>
+       <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+       <script src="axios/dist/axios.min.js"></script>
+       <script src="youtube-api-search/index.js"></script>
 
        <link rel="stylesheet" href="app.css">
     </head>
@@ -21,7 +21,7 @@
                     <div class="col-md-12">
                         <div class="input-group margin-bottom-sm div-buscar">
                             <input type="text" class="form-control" id="buscar" placeholder="Buscar">
-                            <span class="input-group-addon btn" id="btnBuscar"><i class="glyphicon glyphicon-search"></i></span>
+                            <span class="input-group-addon btn btn-danger" id="btnBuscar"><i class="glyphicon glyphicon-search"></i></span>
                         </div>
                     </div>
                 </div>
@@ -29,6 +29,7 @@
                     <div class="col-md-7">
                         <div class="embed-responsive embed-responsive-16by9" id="video">
                         </div>
+                        <div id="infoVideo"></div>
                     </div>
                     <div class="col-md-offset-1 col-md-3">
                         <ol id="root">

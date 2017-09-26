@@ -11,6 +11,8 @@ class Aplicacion
         this.btnBuscar = $(`#btnBuscar`);
         this.lista = $("#root");
         this.video = $(`#video`);
+        this.infoVideo = $(`#infoVideo`);
+        this.imgs = undefined;
     }
     init() 
     {
@@ -29,6 +31,10 @@ class Aplicacion
             this.youtubeSearch(this.buscar.val());
             //this.video.append()
         });
+        this.imgs.click((e) => 
+        {
+            this.youtubeSearch(e.target.id);
+        });
         //app.videoSearch("iPhone");
         
     }
@@ -36,13 +42,12 @@ class Aplicacion
     {
         return videos.map((video, index) => 
         {
-            console.log(video.snippet.title);
             const imageUrl = video.snippet.thumbnails.medium.url;
             //<iframe class="embed-responsive-item" src=${url}></iframe>
             const url = `https://www.youtube.com/embed/${video.id.videoId}`;
             return `<li>
                         <p>
-                            <img class="media-object" src=${imageUrl} />
+                            <img class="media-object" id=${video.id.videoId} src=${imageUrl} />
                             <label>${video.snippet.title}</label>
                         </p>
                     </li>`;
@@ -50,8 +55,6 @@ class Aplicacion
     }
     youtubeSearch(searchTerm) 
     {
-        console.log(searchTerm);
-
         YTSearch({ key: API_KEY, term: searchTerm }, data => 
         {
             console.log("result", data);
@@ -63,11 +66,14 @@ class Aplicacion
             this.lista.append(list);
             let videoSelec = this.videoSeleccionado(this.selectedVideo);
             this.video.append(videoSelec);
+            this.imgs = $(`img`);
         });
     }
     videoSeleccionado(video)
     {
         const url = `https://www.youtube.com/embed/${video.id.videoId}`;
+        this.infoVideo.html(`<h4>${video.snippet.title}</h4>
+                            <p>${video.snippet.description}</p>`);
         return `<iframe class="embed-responsive-item" src=${url}></iframe>`;
     }
     videoSearch(searchTerm) 
