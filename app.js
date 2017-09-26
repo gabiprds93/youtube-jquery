@@ -31,10 +31,7 @@ class Aplicacion
             this.youtubeSearch(this.buscar.val());
             //this.video.append()
         });
-        this.imgs.click((e) => 
-        {
-            this.youtubeSearch(e.target.id);
-        });
+        
         //app.videoSearch("iPhone");
         
     }
@@ -45,6 +42,7 @@ class Aplicacion
             const imageUrl = video.snippet.thumbnails.medium.url;
             //<iframe class="embed-responsive-item" src=${url}></iframe>
             const url = `https://www.youtube.com/embed/${video.id.videoId}`;
+            console.log("VIDEO ID" + video.id.videoId);
             return `<li>
                         <p>
                             <img class="media-object" id=${video.id.videoId} src=${imageUrl} />
@@ -67,6 +65,12 @@ class Aplicacion
             let videoSelec = this.videoSeleccionado(this.selectedVideo);
             this.video.append(videoSelec);
             this.imgs = $(`img`);
+            console.log(this.imgs);
+            this.imgs.click((e) => 
+            {
+                this.lista.empty()
+                this.youtubeSearch(e.target.id);
+            });
         });
     }
     videoSeleccionado(video)
